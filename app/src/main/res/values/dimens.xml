@@ -4,6 +4,7 @@
     <dimen name="icon_header_default_space">20dp</dimen>
     <dimen name="label_header_default_space">18dp</dimen>
     <dimen name="label_header_vertical_space">10dp</dimen>
+    <dimen name="fab_margin">13dp</dimen>
 
 
 </resources>
