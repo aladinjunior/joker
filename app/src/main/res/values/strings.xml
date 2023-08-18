@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Joker</string>
+    <string name="home">Home</string>
+    <string name="day_joke">Today\'s Joke</string>
+    <string name="about">About us</string>
+    <string name="social">Social</string>
 </resources>
