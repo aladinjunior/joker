@@ -11,7 +11,7 @@
             android:title="@string/home" />
 
         <item
-            android:id="@+id/nav_day_joke"
+            android:id="@+id/nav_joke_day"
             android:icon="@drawable/ic_baseline_today_24"
             android:title="@string/day_joke" />
     </group>
