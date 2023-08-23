@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.aladinjunior.joker.R
-import co.aladinjunior.joker.model.Category
-import co.aladinjunior.joker.presentation.Callback
+import co.aladinjunior.joker.data.Callback
 import co.aladinjunior.joker.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
-class HomeFragment : Fragment(), Callback {
+class HomeFragment : Fragment() {
 
     private val presenter = HomePresenter(this)
     private val adapter = GroupieAdapter()
@@ -34,6 +33,7 @@ class HomeFragment : Fragment(), Callback {
         presenter.getCategories()
 
 
+
         progressBar = view.findViewById(R.id.main_progress)
 
         val rv = view.findViewById<RecyclerView>(R.id.rv_main)
@@ -43,23 +43,21 @@ class HomeFragment : Fragment(), Callback {
 
 
 
-
     }
 
-    override fun showCategories(viewHolder: List<CategoryItem>) {
-
+     fun showCategories(viewHolder: List<CategoryItem>) {
         adapter.addAll(viewHolder)
         adapter.notifyDataSetChanged()
 
-
     }
 
-    
-
-    override fun onComplete() {
+    fun hideProgress(){
         progressBar.visibility = View.GONE
-
     }
+
+
+
+
 
 
 }

@@ -2,53 +2,44 @@ package co.aladinjunior.joker.presentation
 
 import android.os.Handler
 import android.os.Looper
-import android.view.View
+import co.aladinjunior.joker.data.Callback
+import co.aladinjunior.joker.data.RemoteDataSource
 import co.aladinjunior.joker.model.Category
 import co.aladinjunior.joker.view.CategoryItem
+import co.aladinjunior.joker.view.HomeFragment
 
-class HomePresenter(private val callback: Callback) {
+class HomePresenter(
+    private val view: HomeFragment,
+    private val dataSource: RemoteDataSource = RemoteDataSource()) : Callback{
+
 
 
     fun getCategories() {
-        fakeRequest()
+        dataSource.fakeRequest(this)
     }
 
-    private fun onSuccess(serverResponse: List<String>) {
 
+
+
+    override fun onSuccess(response: List<String>) {
         val categoryList = mutableListOf<Category>()
         val viewHolder = mutableListOf<CategoryItem>()
-
-        for (categoryTitle in serverResponse) {
+        for (categoryTitle in response) {
             categoryList.add(Category(categoryTitle, 0xFFFF0000))
-
         }
         for (categories in categoryList) {
             viewHolder.add(CategoryItem(categories))
         }
-
-
-
-        callback.showCategories(viewHolder)
-
+        view.showCategories(viewHolder)
 
 
 
     }
 
-    private fun fakeRequest() {
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            val serverResponse = listOf(
-                "Category 1",
-                "Category 2",
-                "Category 3",
-                "Category 4"
-            )
 
-            onSuccess(serverResponse)
-            callback.onComplete()
-
-
-        }, 2000)
+    override fun onComplete() {
+       view.hideProgress()
     }
+
+
 }
