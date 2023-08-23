@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(activity)
         val adapter = GroupieAdapter()
         rv.adapter = adapter
-        
+
 
         adapter.add(CategoryItem(Category("Category 1", 0xFFFF0000)))
         adapter.add(CategoryItem(Category("Category 2", 0xFF00FF00)))
