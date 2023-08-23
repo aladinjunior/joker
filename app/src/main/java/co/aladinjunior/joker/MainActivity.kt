@@ -2,6 +2,7 @@ package co.aladinjunior.joker
 
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.MediaController
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import co.aladinjunior.joker.model.Category
+import co.aladinjunior.joker.view.CategoryItem
 import com.google.android.material.navigation.NavigationView
 
 
@@ -41,6 +44,16 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navigationView.setupWithNavController(navController)
+
+        val list = mutableListOf(
+            Category("Category 1", 0xFFFF0000),
+            Category("Category 2", 0xFF00FF00),
+            Category("Category 3", 0xFF0000FF),
+            Category("Category 4", 0xFFFFFF00))
+
+        for(x in list){
+            Log.i("test", "${x.name}")
+        }
 
 
     }

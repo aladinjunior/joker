@@ -9,9 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.aladinjunior.joker.R
 import co.aladinjunior.joker.model.Category
+import co.aladinjunior.joker.presentation.Callback
+import co.aladinjunior.joker.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), Callback {
+
+    private val presenter = HomePresenter(this)
+    private val adapter = GroupieAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,19 +28,20 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        presenter.getCategories()
+
 
         val rv = view.findViewById<RecyclerView>(R.id.rv_main)
         rv.layoutManager = LinearLayoutManager(activity)
-        val adapter = GroupieAdapter()
         rv.adapter = adapter
 
 
-        adapter.add(CategoryItem(Category("Category 1", 0xFFFF0000)))
-        adapter.add(CategoryItem(Category("Category 2", 0xFF00FF00)))
-        adapter.add(CategoryItem(Category("Category 3", 0xFF0000FF)))
-        adapter.add(CategoryItem(Category("Category 4", 0xFFFFFF00)))
+
+
+    }
+
+    override fun showCategories(viewHolder: List<CategoryItem>) {
+        adapter.addAll(viewHolder)
         adapter.notifyDataSetChanged()
-
-
     }
 }
