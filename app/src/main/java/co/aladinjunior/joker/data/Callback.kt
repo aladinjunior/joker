@@ -6,4 +6,5 @@ interface Callback {
 
     fun onSuccess(response: List<String>)
     fun onComplete()
+    fun onError(message: String)
 }

@@ -2,6 +2,7 @@ package co.aladinjunior.joker.presentation
 
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import co.aladinjunior.joker.data.Callback
 import co.aladinjunior.joker.data.RemoteDataSource
 import co.aladinjunior.joker.model.Category
@@ -39,6 +40,10 @@ class HomePresenter(
 
     override fun onComplete() {
        view.hideProgress()
+    }
+
+    override fun onError(message: String) {
+        view.showFailure(message)
     }
 
 

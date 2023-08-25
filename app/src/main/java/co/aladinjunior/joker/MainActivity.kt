@@ -45,15 +45,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navigationView.setupWithNavController(navController)
 
-        val list = mutableListOf(
-            Category("Category 1", 0xFFFF0000),
-            Category("Category 2", 0xFF00FF00),
-            Category("Category 3", 0xFF0000FF),
-            Category("Category 4", 0xFFFFFF00))
-
-        for(x in list){
-            Log.i("test", "${x.name}")
-        }
 
 
     }
