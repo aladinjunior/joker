@@ -8,7 +8,7 @@ import co.aladinjunior.joker.model.Category
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
-class CategoryItem(private val category: Category) : Item<CategoryItem.ViewHolder>() {
+class CategoryItem(val category: Category) : Item<CategoryItem.ViewHolder>() {
 
     override fun createViewHolder(itemView: View): ViewHolder {
         return ViewHolder(itemView)

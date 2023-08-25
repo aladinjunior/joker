@@ -2,21 +2,15 @@ package co.aladinjunior.joker
 
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.MediaController
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import co.aladinjunior.joker.model.Category
-import co.aladinjunior.joker.view.CategoryItem
 import com.google.android.material.navigation.NavigationView
 
 

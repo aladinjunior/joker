@@ -18,6 +18,7 @@ class HomePresenter(
 
 
     fun getCategories() {
+        view.showProgress()
         dataSource.fakeRequest(this)
     }
 

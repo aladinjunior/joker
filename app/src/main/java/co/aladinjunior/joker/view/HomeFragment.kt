@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.aladinjunior.joker.R
@@ -31,11 +32,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter.getCategories()
-
-
 
         progressBar = view.findViewById(R.id.main_progress)
+
+        if (adapter.itemCount == 0) presenter.getCategories()
+
+
+
 
         val rv = view.findViewById<RecyclerView>(R.id.rv_main)
         rv.layoutManager = LinearLayoutManager(activity)
@@ -43,6 +46,12 @@ class HomeFragment : Fragment() {
 
 
 
+        adapter.setOnItemClickListener { item, view ->
+            val bundle = Bundle()
+            val categoryName = (item as CategoryItem).category.name
+            bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)
+            findNavController().navigate(R.id.nav_home_to_nav_joke, bundle)
+        }
 
     }
 
@@ -52,13 +61,21 @@ class HomeFragment : Fragment() {
 
     }
 
+    fun showProgress(){
+        progressBar.visibility = View.VISIBLE
+    }
+
     fun showFailure(message: String){
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
+
+
     fun hideProgress(){
         progressBar.visibility = View.GONE
     }
+
+
 
 
 
