@@ -1,7 +1,9 @@
 package co.aladinjunior.joker.presentation
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import co.aladinjunior.joker.data.Callback
 import co.aladinjunior.joker.data.RemoteDataSource
@@ -25,8 +27,16 @@ class HomePresenter(
     override fun onSuccess(response: List<String>) {
         val categoryList = mutableListOf<Category>()
         val viewHolder = mutableListOf<CategoryItem>()
+        val start = 40
+        val end = 190
+        val diff = (end - start) / response.size
         for (categoryTitle in response) {
-            categoryList.add(Category(categoryTitle, 0xFFFF0000))
+            val hsv = floatArrayOf(
+                start + (diff * response.indexOf(categoryTitle)).toFloat(),
+                100.0f,
+                100.0f
+            )
+            categoryList.add(Category(categoryTitle, Color.HSVToColor(hsv).toLong()))
         }
         for (categories in categoryList) {
             viewHolder.add(CategoryItem(categories))
