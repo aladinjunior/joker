@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.aladinjunior.joker.R
-import co.aladinjunior.joker.data.Callback
 import co.aladinjunior.joker.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
