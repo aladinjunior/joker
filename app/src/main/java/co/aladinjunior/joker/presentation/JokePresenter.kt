@@ -8,18 +8,18 @@ import co.aladinjunior.joker.view.JokeFragment
 
 class JokePresenter(
     private val view: JokeFragment,
-    private val dataSource: RemoteDataSource = RemoteDataSource(),
+    private val dataSource: RemoteDataSource = RemoteDataSource()
 ) : JokeCallback {
 
-    fun getJoke(){
-        dataSource.getJokes(this)
+    fun getJoke(categoryName: String){
+        dataSource.getJokes(this, categoryName)
     }
 
 
 
 
     override fun onSuccess(response: Joke) {
-        view.showJoke("x", response.joke)
+        view.showJoke(response.joke)
 
     }
 

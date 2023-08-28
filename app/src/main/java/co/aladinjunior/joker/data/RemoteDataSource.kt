@@ -1,6 +1,5 @@
 package co.aladinjunior.joker.data
 
-import co.aladinjunior.joker.model.Category
 import co.aladinjunior.joker.model.Joke
 import co.aladinjunior.joker.view.JokeFragment
 import retrofit2.Call
@@ -13,7 +12,7 @@ class RemoteDataSource {
 
     fun getCategoryList(categoryListCallback: CategoryListCallback) {
         HTTPClient.retrofit()
-            .create(ChuckNorrisCategoriesAPI::class.java)
+            .create(ChuckNorrisAPI::class.java)
             .getCategories()
             .enqueue(object : retrofit2.Callback<List<String>>{
                 override fun onResponse(
@@ -41,9 +40,9 @@ class RemoteDataSource {
     }
 
     fun getJokes(jokeCallback: JokeCallback,
-                 categoryName: String = JokeFragment.CATEGORY_KEY) {
+                categoryName: String) {
         HTTPClient.retrofit()
-            .create(ChuckNorrisJokesAPI::class.java)
+            .create(ChuckNorrisAPI::class.java)
             .getJokes(category = categoryName)
             .enqueue(object : Callback<Joke>{
                 override fun onResponse(call: Call<Joke>, response: Response<Joke>) {
