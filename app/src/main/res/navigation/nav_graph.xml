@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/nav_joke_day"
-        android:name="co.aladinjunior.joker.JokeDayFragment"
+        android:name="co.aladinjunior.joker.view.JokeDayFragment"
         android:label="@string/day_joke"
         tools:layout="@layout/main_content" />
 

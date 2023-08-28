@@ -64,4 +64,10 @@ class RemoteDataSource {
 
             })
     }
+
+    fun getJokeDay(jokeCallback: JokeCallback) {
+        HTTPClient.retrofit()
+            .create(ChuckNorrisAPI::class.java)
+            .getJokeDay()
+    }
 }
